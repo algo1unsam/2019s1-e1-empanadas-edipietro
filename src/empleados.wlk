@@ -12,15 +12,29 @@ object gimenez {
 	method sueldo(nuevoValor) { sueldo = nuevoValor }
 	method cobrarSueldo(_dinero){self.sueldo(_dinero)
 		self.evaluoSiTengoDinero()
-		
 	}
-
 	method gastar(cuanto){
-		dineroGastado=cuanto
+		if(cuanto>sueldo)
+		deuda+=cuanto
 		sueldo-=cuanto
-		deuda+=dineroGastado 
 	}
+	method evaluoSiTengoDinero(){
+		if(deuda<sueldo){
+	      dinero=sueldo-deuda
+	      self.pagarDeuda()
+	      }
+	   else
+	    sueldo=0	
+	     self.evaluoDinero()     
+		}
+	method evaluoDinero(){
+		if (dinero>0){}
+	}	
 	
+	method pagarDeuda(){
+		if(deuda<=sueldo){ deuda -=sueldo }
+	 deuda=0
+	}
 	method totalDeuda()
 	{return deuda
 	}
@@ -28,21 +42,6 @@ object gimenez {
 	method totalDinero(){
 		
 		return dinero	 	
-	}
-	
-	method evaluoSiTengoDinero(){
-		if(sueldo>=deuda){
-	dinero=sueldo-deuda}
-	self.pagarDeuda()
-		}
-	
-	method pagarDeuda(){
-		if(deuda>=sueldo && sueldo>=0){
-	 deuda -=sueldo
-	 deuda+=dinero
-	 }
-	 sueldo-=deuda
-	 deuda=0
 	}
 }
 

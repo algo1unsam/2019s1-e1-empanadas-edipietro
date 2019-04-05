@@ -16,3 +16,18 @@ test "Galvan paga a empleados" {
 	baigorria.ventaEmpanadas(30)
  	galvan.pagarA(baigorria)
 	assert.equals(270000,galvan.dinero()) }
+	
+	
+	test "Manejo de las finanzas de Gimenez" {
+	gimenez.gastar(4000)
+	gimenez.gastar(8000)
+	assert.equals(12000,gimenez.totalDeuda())
+	gimenez.cobrarSueldo()
+	assert.equals(0,gimenez.totalDeuda())
+	assert.equals(3000,gimenez.totalDinero())
+	gimenez.gastar(25000)
+	assert.equals(22000,gimenez.totalDeuda())
+	gimenez.cobrarSueldo()
+	assert.equals(22000,gimenez.totalDeuda())
+	assert.equals(0,gimenez.totalDinero())
+ 	 }
